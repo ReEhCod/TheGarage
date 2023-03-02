@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 
 namespace TheGarage.Models
 {
     public class CarModel
     {
-        [Key]
+        [System.ComponentModel.DataAnnotations.Key]
         public int CarId { get; set; }
         public string Mark { get; set; } = null!;
         public string? Model { get; set; }
