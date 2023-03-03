@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheGarage"
         mc:Ignorable="d"
-        Title="GarageWindow" Height="450" Width="800">
+        Title="GarageWindow" Height="600" Width="800">
     <Grid Margin="5" Background="Blue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -13,15 +13,89 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+
+        <!--Tools-->
+        <Label
+            Grid.ColumnSpan="4"
+            Content="Available cars"
+            FontSize="40"
+            FontWeight="Bold"
+            Foreground="White"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            
+            />
+        <ListView
+            x:Name="lvCars"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="4"
+        />
+        <Label 
+            Grid.Column="4"
+            Grid.ColumnSpan="2"
+            Margin="5,40,5,0"
+            Content="Filter"
+            FontSize="40"
+            FontWeight="Bold"
+            Foreground="White"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            />
+        <Label 
+            Grid.Row="1"
+            Grid.Column="4"
+            Margin="5,0,5,70"
+            Content="Mark"
+            FontSize="16"
+            Foreground="White"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            />
+        <TextBox
+            x:Name="tbMark"
+            Grid.Row="1"
+            Grid.Column="4"
+            Width="auto"
+            Height="40"
+            Margin="5"
+            />
+        <Label 
+            Grid.Row="1"
+            Grid.Column="5"
+            Margin="5,0,5,70"
+            Content="Seats"
+            FontSize="16"
+            Foreground="White"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            />
+        <ComboBox
+            Name="cbSeats"
+            Grid.Row="1"
+            Grid.Column="5"
+            Margin="30,40"
+            />
+        <Button
+            Grid.Row="4"
+            Grid.Column="4"
+            Margin="30,35"
+            Content="Delete"
+            FontFamily="Arial"
+            FontWeight="Heavy"
+            FontSize="15"
+            />
     </Grid>
 </Window>

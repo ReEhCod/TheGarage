@@ -18,21 +18,45 @@ namespace TheGarage.Services
         {
             _context = context;
         }
-
-        // Get one car by its id
+        /// <summary>
+        /// Gets a car from database by its id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A specefic car model</returns>
         public CarModel? GetCar(int id)
         {
             return _context.Cars.FirstOrDefault(c => c.CarId == id);
         }
-        public List<CarModel> GetCars()
-        {
-            return _context.Cars.ToList();
-        }
 
-        // Get all cars 
+        /// <summary>
+        /// Gets a list of all cars from database.
+        /// </summary>
+        /// <returns>A list of car models.</returns> 
         public async Task<List<CarModel>> GetCarsAsync()
         {
-            return await _context.Cars.ToList();
+            return await _context.Cars.ToListAsync();
+        }
+
+        /// <summary>
+        /// Adds a new car to the database.
+        /// </summary>
+        /// <param name="carToAdd">The car model to add to database.</param>
+        public void AddCar(CarModel carToAdd)
+        {
+            _context.Cars.Add(carToAdd);
+        }
+
+        /// <summary>
+        /// Remove the specified car by its Id.
+        /// </summary>
+        /// <param name="id">The Id of the car to remove.</param>
+        public void RemoveTheCar(int id)
+        {
+            var carToRemove = _context.Cars.FirstOrDefault(c => c.CarId == id);
+            if (carToRemove != null)
+            {
+                _context.Cars.Remove(carToRemove);
+            }
         }
 
 
