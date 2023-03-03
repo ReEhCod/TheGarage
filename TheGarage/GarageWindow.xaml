@@ -71,6 +71,7 @@
             Width="auto"
             Height="40"
             Margin="5"
+            FontSize="16"
             />
         <Label 
             Grid.Row="1"
@@ -89,6 +90,7 @@
             Margin="30,40"
             />
         <Button
+            x:Name="btnDelete"
             Grid.Row="4"
             Grid.Column="4"
             Margin="30,35"
@@ -96,6 +98,7 @@
             FontFamily="Arial"
             FontWeight="Heavy"
             FontSize="15"
+            Click="btnDelete_Click"
             />
     </Grid>
 </Window>
