@@ -20,13 +20,15 @@ namespace TheGarage.Data
 
         }
 
+       
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TheGarage;Trusted_Connection=True;");
+            optionsBuilder.UseLazyLoadingProxies().UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TheGarage;Trusted_Connection=True;");
         }
 
         // The Cars table in database
-        public DbSet<CarModel> Cars { get; set; }
+        public virtual DbSet<CarModel> Cars { get; set; }
 
         // Prefilling the databse by seeding data 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -56,7 +58,7 @@ namespace TheGarage.Data
             {
                 CarId = 4,
                 Mark = "Entap",
-                Model = "Mada 9)",
+                Model = "Mada 9",
                 IsElectric = false,
                 NumberOfSeats = 2,
             });

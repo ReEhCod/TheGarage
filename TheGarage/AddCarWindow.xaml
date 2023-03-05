@@ -112,7 +112,7 @@
             HorizontalAlignment="Left"
             />
         <CheckBox
-            x:Name="CheckBox"
+            x:Name="chbxIsElectric"
             Content="Yes"
             FontSize="20"
             Grid.Row="5"
