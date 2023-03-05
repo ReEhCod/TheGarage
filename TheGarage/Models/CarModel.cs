@@ -10,6 +10,7 @@ namespace TheGarage.Models
 {
     public class CarModel
     {
+
         [System.ComponentModel.DataAnnotations.Key]
         public int CarId { get; set; }
         public string Mark { get; set; } = null!;

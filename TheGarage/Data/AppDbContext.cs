@@ -45,6 +45,20 @@ namespace TheGarage.Data
                 Model = "XC 40",
                 IsElectric = false,
                 NumberOfSeats = 5,
+            }, new CarModel()
+            {
+                CarId = 3,
+                Mark = "Audi",
+                Model = "S5",
+                IsElectric = false,
+                NumberOfSeats = 4,
+            }, new CarModel()
+            {
+                CarId = 4,
+                Mark = "Entap",
+                Model = "Mada 9)",
+                IsElectric = false,
+                NumberOfSeats = 2,
             });
         }
     }

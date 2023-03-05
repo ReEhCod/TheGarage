@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:TheGarage"
         mc:Ignorable="d"
         Title="GarageWindow" Height="600" Width="800">
-    <Grid Margin="5" Background="Blue">
+    <Grid Margin="5" Background="CadetBlue">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -22,7 +22,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--Tools-->
@@ -39,12 +39,23 @@
         <ListView
             x:Name="lvCars"
             Grid.Row="1"
-            Grid.Column="1"
-            Grid.ColumnSpan="3"
+            Grid.ColumnSpan="5"
             Grid.RowSpan="4"
-        />
+            Margin="5,0,30,0"
+            SelectionChanged="lvCars_SelectionChanged"
+            ItemsSource="{Binding cars}">
+            <ListView.View>
+            <GridView>
+                <GridViewColumn Header="Car ID" DisplayMemberBinding="{Binding CarId}" Width="50"/>
+                <GridViewColumn Header="Mark" DisplayMemberBinding="{Binding Mark}" Width="120"/>
+                <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model}" Width="120"/>
+                <GridViewColumn Header="Is Electric?" DisplayMemberBinding="{Binding IsElectric}" Width="100"/>
+                <GridViewColumn Header="Number of Seats" DisplayMemberBinding="{Binding NumberOfSeats}" Width="100"/>
+            </GridView>
+            </ListView.View>
+            </ListView>
         <Label 
-            Grid.Column="4"
+            Grid.Column="5"
             Grid.ColumnSpan="2"
             Margin="5,40,5,0"
             Content="Filter"
@@ -56,8 +67,8 @@
             />
         <Label 
             Grid.Row="1"
-            Grid.Column="4"
-            Margin="5,0,5,70"
+            Grid.Column="5"
+            Margin="5,0,5,50"
             Content="Mark"
             FontSize="16"
             Foreground="White"
@@ -67,16 +78,16 @@
         <TextBox
             x:Name="tbMark"
             Grid.Row="1"
-            Grid.Column="4"
+            Grid.Column="5"
             Width="auto"
-            Height="40"
-            Margin="5"
+            
+            Margin="5,50,5,10"
             FontSize="16"
             />
         <Label 
             Grid.Row="1"
-            Grid.Column="5"
-            Margin="5,0,5,70"
+            Grid.Column="6"
+            Margin="5,0,5,50"
             Content="Seats"
             FontSize="16"
             Foreground="White"
@@ -86,19 +97,56 @@
         <ComboBox
             Name="cbSeats"
             Grid.Row="1"
-            Grid.Column="5"
-            Margin="30,40"
+            Grid.Column="6"
+            Margin="20,60,20,10"
             />
         <Button
             x:Name="btnDelete"
             Grid.Row="4"
-            Grid.Column="4"
-            Margin="30,35"
+            Grid.Column="5"
+            Margin="20,35"
             Content="Delete"
             FontFamily="Arial"
             FontWeight="Heavy"
             FontSize="15"
             Click="btnDelete_Click"
+            />
+        <Button
+            x:Name="btnAdd"
+            Grid.Row="4"
+            Grid.Column="6"
+            Margin="20,35"
+            Content="Add"
+            FontFamily="Arial"
+            FontWeight="Heavy"
+            FontSize="15"
+            Click="btnAdd_Click"
+            ToolTip="Click here to go to the AddCar window"
+            
+            />
+        <Button
+            x:Name="btnSearch"
+            Grid.Row="2"
+            Grid.Column="6"
+            Margin="20,35"
+            Content="Search"
+            FontFamily="Arial"
+            FontWeight="Heavy"
+            FontSize="15"
+            Click="btnSearch_Click"
+            ToolTip="Click here to search"
+            />
+        <Button
+            x:Name="btnAllCars"
+            Grid.Row="2"
+            Grid.Column="5"
+            Margin="20,35"
+            Content="See All"
+            FontFamily="Arial"
+            FontWeight="Heavy"
+            FontSize="15"
+            Click="btnAllCars_Click"
+            ToolTip="Click here to see all cars available"
             />
     </Grid>
 </Window>

@@ -131,5 +131,17 @@
             FontSize="16"
             Click="btnSave_Click"
             />
+        <Button
+            x:Name="btnCancel"
+            Grid.Row="5"
+            Grid.Column="6"
+            Margin="20,17"
+            Content="Cancel"
+            FontFamily="Arial"
+            FontWeight="Heavy"
+            FontSize="16"
+            Click="btnCancel_Click"
+            ToolTip="Click here to cancel and go back to the car window"
+            />
     </Grid>
 </Window>

@@ -32,9 +32,9 @@ namespace TheGarage.Services
         /// Gets a list of all cars from database.
         /// </summary>
         /// <returns>A list of car models.</returns> 
-        public async Task<List<CarModel>> GetCarsAsync()
+        public List<CarModel> GetCars()
         {
-            return await _context.Cars.ToListAsync();
+            return _context.Cars.ToList();
         }
 
         /// <summary>
