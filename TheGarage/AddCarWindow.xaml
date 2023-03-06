@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheGarage"
         mc:Ignorable="d"
-        Title="AddCarWindow" Height="450" Width="800">
+        Title="AddCarWindow" Height="600" Width="800" WindowStyle ="None" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True">
     <Grid Margin="3" Background="CadetBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/> 
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -57,7 +57,7 @@
             Grid.Column="3"
             Width="auto"
             Height="40"
-            Margin="5"
+            Margin="5,43"
             />
         
         <Label
@@ -77,7 +77,7 @@
             Grid.Column="3"
             Width="auto"
             Height="40"
-            Margin="5"
+            Margin="5,43"
             />
         
         <Label
@@ -97,7 +97,7 @@
             Grid.Column="3"
             Width="auto"
             Height="40"
-            Margin="5"
+            Margin="5,43"
             />
         
         <Label
@@ -124,7 +124,7 @@
             x:Name="btnSave"
             Grid.Row="5"
             Grid.Column="5"
-            Margin="20,17"
+            Margin="20,35"
             Content="Save"
             FontFamily="Arial"
             FontWeight="Heavy"
@@ -135,7 +135,7 @@
             x:Name="btnCancel"
             Grid.Row="5"
             Grid.Column="6"
-            Margin="20,17"
+            Margin="20,35"
             Content="Cancel"
             FontFamily="Arial"
             FontWeight="Heavy"

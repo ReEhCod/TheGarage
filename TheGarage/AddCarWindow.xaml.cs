@@ -26,18 +26,31 @@ namespace TheGarage
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Saves all the input information about a new car in database and sends user back to GarageWindow. It checks so every input is correct filled. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string mark = tbMarkToAdd.Text;
             string model = tbModelToAdd.Text;
-            int numberOfSeats = int.Parse(tbNumberOfSeats.Text);
-            bool isElectric = chbxIsElectric.IsChecked ??  false;
+            
+            bool isElectric = chbxIsElectric.IsChecked ?? false;
 
-            if(mark == null || numberOfSeats == null || model == null) 
+            if (string.IsNullOrEmpty(mark) || string.IsNullOrEmpty(model) || string.IsNullOrEmpty(tbNumberOfSeats.Text))
             {
                 MessageBox.Show("Please fill with more information", "Attention");
-            } else
+                return;
+            }
+            if(!int.TryParse(tbNumberOfSeats.Text, out int numberOfSeats))
             {
+                MessageBox.Show("Please enter a valid number for number of seats", "Attention");
+                return;
+            }
+            try
+            {
+
                 CarModel newCar = new CarModel()
                 {
                     Mark = mark,
@@ -51,13 +64,19 @@ namespace TheGarage
                     context.Cars.Add(newCar);
                     context.SaveChanges();
                 }
+
+                MessageBox.Show("New car added successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                GarageWindow gw = new();
+                gw.Show();
+                Close();
             }
-            MessageBox.Show("New car added successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            GarageWindow gw = new();
-            gw.Show();
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        // Button sends user back to main page
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             GarageWindow garageWindow = new();

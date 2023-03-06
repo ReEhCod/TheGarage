@@ -28,6 +28,7 @@ namespace TheGarage
             InitializeComponent();
             btnDelete.IsEnabled= false;
             
+            // Populates number of seats of all existing cars into the combo box
             using (AppDbContext context = new())
             {
                 CarRepo carRepo = new(context);
@@ -37,7 +38,9 @@ namespace TheGarage
             UpdateUi();
         }
 
-
+        /// <summary>
+        /// Populate all cars with their properties on the list view.
+        /// </summary>
         private void UpdateUi()
         {
             using(AppDbContext context = new())
@@ -50,6 +53,11 @@ namespace TheGarage
             btnAllCars.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Deleting choosen car by its ID from database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             CarModel selectedCar = (CarModel)lvCars.SelectedItem;
@@ -70,6 +78,11 @@ namespace TheGarage
             
         }
 
+        /// <summary>
+        /// Sends user to the AddCarWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddCarWindow addWindow = new();
@@ -78,6 +91,11 @@ namespace TheGarage
 
         }
 
+        /// <summary>
+        /// Changes the selection of delete button depended on activity in the list view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lvCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lvCars.SelectedItems.Count > 0)
@@ -90,7 +108,11 @@ namespace TheGarage
             }
         }
 
-
+        /// <summary>
+        /// The button controll the whole filter functionality. Either filter by number of seats or mark the button should be clicked for filter to happen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             string mark = tbMark.Text;
@@ -98,7 +120,7 @@ namespace TheGarage
 
             if (string.IsNullOrEmpty(mark) && seats == null)
             {
-                MessageBox.Show("Please enter a search term or select a number of seats.");
+                MessageBox.Show("Please enter a search term or select a number of seats available.");
                 return;
             }
 
@@ -106,7 +128,7 @@ namespace TheGarage
             {
                 CarRepo carRepo = new(context);
                 List<CarModel> filteredCars = carRepo.GetCars()
-                    .Where(c => string.IsNullOrEmpty(mark) || c.Mark.Contains(mark))
+                    .Where(c => string.IsNullOrEmpty(mark) || c.Mark.ToLower().Contains(mark))
                     .Where(c => seats == null || c.NumberOfSeats == seats.Value)
                     .ToList();
 
@@ -117,6 +139,11 @@ namespace TheGarage
             btnAllCars.IsEnabled = true;
         }
 
+        /// <summary>
+        /// This button is available when in filtering mode. When clicked it shows all cars in database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAllCars_Click(object sender, RoutedEventArgs e)
         {
             UpdateUi();

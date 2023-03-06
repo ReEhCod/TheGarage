@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheGarage"
         mc:Ignorable="d"
-        Title="GarageWindow" Height="600" Width="800">
+        Title="GarageWindow" Height="600" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Margin="5" Background="CadetBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -49,9 +49,30 @@
                 <GridViewColumn Header="Car ID" DisplayMemberBinding="{Binding CarId}" Width="50"/>
                 <GridViewColumn Header="Mark" DisplayMemberBinding="{Binding Mark}" Width="120"/>
                 <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model}" Width="120"/>
-                <GridViewColumn Header="Is Electric?" DisplayMemberBinding="{Binding IsElectric}" Width="100"/>
+
                 <GridViewColumn Header="Number of Seats" DisplayMemberBinding="{Binding NumberOfSeats}" Width="100"/>
-            </GridView>
+                    <GridViewColumn Header="Is electric" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Text" Value="{Binding IsElectric}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsElectric}" Value="True">
+                                                    <Setter Property="Text" Value="Yes" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsElectric}" Value="False">
+                                                    <Setter Property="Text" Value="No" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
             </ListView.View>
             </ListView>
         <Label 
@@ -80,8 +101,7 @@
             Grid.Row="1"
             Grid.Column="5"
             Width="auto"
-            
-            Margin="5,50,5,10"
+            Margin="5,57,5,10"
             FontSize="16"
             />
         <Label 
